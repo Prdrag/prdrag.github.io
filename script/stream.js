@@ -30,7 +30,7 @@ function GetStreams() {
             url: "https://api.twitch.tv/kraken/streams",
             data: {
                 "channel": channels.join(","),
-                "limit": channels.length
+                "limit": 100
             },
             cache: false,
             dataType: "jsonp"
