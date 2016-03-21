@@ -129,24 +129,14 @@ function showchat(){
 }
 
 function twitchAUTH(){
-    $.ajax({
-    url: "https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=ibgi0jycf73wqfwn4cjs1zhcv5utn2g&redirect_uri=http://prdrag.github.io/&scope=follows",
-    data: {"channel": channels.join(","), "limit": channels.length},
-    cache: false,
-    dataType: "jsonp"
-    })
-    .done(function (data) {
-      // Stuff here
-    })
-    .fail(function () {
-      // In the event of failure, wait 5 seconds and try again
-      setTimeout(document.GetStreams, 5000);
-    });  
+  $.get( "https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=ibgi0jycf73wqfwn4cjs1zhcv5utn2g&redirect_uri=http://prdrag.github.io&scope=user_read", function( data ) {
+    cosole.log(data);
+  });
 }
 
 
 
 jQuery(document).ready(function() {
-
+  twitchAUTH();
   GetChannels();
 });
