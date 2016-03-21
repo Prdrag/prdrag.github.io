@@ -128,15 +128,30 @@ function showchat(){
   }
 }
 
-function twitchAUTH(){
-  $.get( "https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=ibgi0jycf73wqfwn4cjs1zhcv5utn2g&redirect_uri=http://prdrag.github.io&scope=user_read", function( data ) {
-    cosole.log(data);
-  });
-}
 
 
 
 jQuery(document).ready(function() {
-  twitchAUTH();
+  Twitch.init({clientId: "ibgi0jycf73wqfwn4cjs1zhcv5utn2g"}, function(error, status) {
+    if (status.authenticated) {
+      // we're logged in :)
+      $('.status input').val('Logged in! Allowed scope: ' + status.scope);
+      // Show the data for logged-in users
+      $('.authenticated').removeClass('hidden');
+    } else {
+      $('.status input').val('Not Logged in! Better connect with Twitch!');
+      // Show the twitch connect button
+      $('.authenticate').removeClass('hidden');
+    }
+  });
+
+
+  $('.twitch-connect').click(function() {
+    Twitch.login({
+      scope: ['user_read', 'channel_read']
+    });
+  })
+
+
   GetChannels();
 });
