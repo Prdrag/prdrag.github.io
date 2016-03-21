@@ -9,6 +9,10 @@
     width: 20% !important;
 }
 
+.hidden {
+    display: none;
+}
+
 #streams{
     margin: 0;
 }
