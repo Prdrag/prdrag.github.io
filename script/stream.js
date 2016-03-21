@@ -156,8 +156,5 @@ jQuery(document).ready(function() {
     });
   })
 
-  setTimeout(
-    if (LoggedUser != ''){
-       GetChannels(LoggedUser);
-    }, 1000);
+  setTimeout(GetChannels(LoggedUser), 1000);
 });
