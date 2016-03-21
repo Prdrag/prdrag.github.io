@@ -155,8 +155,9 @@ jQuery(document).ready(function() {
     });
     Twitch.api({method: 'user'}, function(error, user) {
       LoggedUser = user.display_name;
+      GetChannels(LoggedUser);
     });
   })
 
-  setTimeout(GetChannels(LoggedUser), 3000);
+  // setTimeout(GetChannels(LoggedUser), 3000);
 });
