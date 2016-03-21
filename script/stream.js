@@ -107,7 +107,7 @@ function closestream(attrib) {
 
 function update() {
     document.getElementById('streams').innerHTML = ("");
-    GetChannels();
+    twitch();
 }
 
 function showchat() {
@@ -132,7 +132,22 @@ function showchat() {
     }
 }
 
+function twitch(){
+    Twitch.api({
+        method: 'user'
+    }, function(error, user) {
+        if (error) console.log("ERROR");
+        var channel = "";
+        Twitch.api({
+            method: 'users/' + user.name + '/follows/channels/' + channel,
+            verb: 'PUT'
+        }, function(error, response) {
+            if (error) console.log(error);
 
+            if (response) GetChannels(response);
+        });
+    });
+}
 
 
 jQuery(document).ready(function() {
@@ -150,25 +165,12 @@ jQuery(document).ready(function() {
             $('.authenticate').removeClass('hidden');
         }
     });
-
+    
 
     $('.twitch-connect').click(function() {
         Twitch.login({
             scope: ['user_read', 'channel_read']
         });
     })
-    Twitch.api({
-        method: 'user'
-    }, function(error, user) {
-        if (error) console.log("ERROR");
-        var channel = "";
-        Twitch.api({
-            method: 'users/' + user.name + '/follows/channels/' + channel,
-            verb: 'PUT'
-        }, function(error, response) {
-            if (error) console.log(error);
-
-            if (response) GetChannels(response);
-        });
-    });
+    twitch();
 });
