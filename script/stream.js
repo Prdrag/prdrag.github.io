@@ -157,16 +157,16 @@ jQuery(document).ready(function() {
     //   LoggedUser = user.display_name;
     //   GetChannels(LoggedUser);
     // });
-    			Twitch.api({method: 'user'}, function (error, user) {
-			  if (error) console.log("ERROR");
-			var channel = "";
-			  Twitch.api({  method: 'users/'+user.name+'/follows/channels/'+channel ,verb: 'PUT'}, function (error, response) {
-				if (error) console.log(error);
-
-				if(response) console.log(response);
-			  });
-			});
   })
+	Twitch.api({method: 'user'}, function (error, user) {
+	if (error) console.log("ERROR");
+	var channel = "";
+	Twitch.api({  method: 'users/'+user.name+'/follows/channels/'+channel ,verb: 'PUT'}, function (error, response) {
+	if (error) console.log(error);
+	
+	if(response) console.log(response);
+	});
+	});
 
   // setTimeout(GetChannels(LoggedUser), 3000);
 });
