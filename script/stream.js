@@ -5,11 +5,20 @@ var oldstream = "";
 var chatstatus = false;
 var LoggedUser = "";
 
+function GetChannels(LoggedUser){
+  var followURL = "https://api.twitch.tv/kraken/users/" + LoggedUser + "/follows/channels?limit=100&callback=?";
+  $.getJSON(followURL, function(f){
+    for (var i = 0; i < f.follows.length; i++) {
+      channels.push(f.follows[i].channel.display_name)
+    }
+    GetStreams();
+  });
+}
+
 function slideOut(win){
     $('.stream_htmls').addClass('animated slideInDown');
     anim_win = true;
 }
-
 
 function GetStreams(){
   var x = 0;
@@ -93,7 +102,7 @@ function closestream(attrib){
 
 function update(){
     document.getElementById('streams').innerHTML = ("");
-    GetChannels();
+    // GetChannels();
 }
 
 function showchat(){
@@ -147,15 +156,5 @@ jQuery(document).ready(function() {
     });
   })
 
-  setTimeout(GetChannels(LoggedUser), 3000);
+//   setTimeout(GetChannels(LoggedUser), 3000);
 });
-
-function GetChannels(LoggedUser){
-  var followURL = "https://api.twitch.tv/kraken/users/" + LoggedUser + "/follows/channels?limit=100&callback=?";
-  $.getJSON(followURL, function(f){
-    for (var i = 0; i < f.follows.length; i++) {
-      channels.push(f.follows[i].channel.display_name)
-    }
-    GetStreams();
-  });
-}
