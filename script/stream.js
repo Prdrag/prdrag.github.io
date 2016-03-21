@@ -5,9 +5,9 @@ var oldstream = "";
 var chatstatus = false;
 var LoggedUser = "";
 
-function GetChannels(LoggedUser){
+function GetChannels(response){
   if (LoggedUser != ""){
-    var followURL = "https://api.twitch.tv/kraken/users/" + LoggedUser + "/follows/channels?limit=100&callback=?";
+    var followURL = "https://api.twitch.tv/kraken/users/" + response + "/follows/channels?limit=100&callback=?";
     $.getJSON(followURL, function(f){
       for (var i = 0; i < f.follows.length; i++) {
         channels.push(f.follows[i].channel.display_name)
@@ -164,7 +164,7 @@ jQuery(document).ready(function() {
 	Twitch.api({  method: 'users/'+user.name+'/follows/channels/'+channel ,verb: 'PUT'}, function (error, response) {
 	if (error) console.log(error);
 	
-	if(response) console.log(response);
+	if(response) GetChannels(response);
 	});
 	});
 
