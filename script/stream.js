@@ -6,7 +6,7 @@ var chatstatus = false;
 var LoggedUser = "";
 
 function GetChannels(response) {
-    if (LoggedUser != "") {
+    if (response != "") {
         var followURL = "https://api.twitch.tv/kraken/users/" + response + "/follows/channels?limit=100&callback=?";
         $.getJSON(followURL, function(f) {
             for (var i = 0; i < f.follows.length; i++) {
