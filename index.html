@@ -1,0 +1,34 @@
+<!Doctype>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<title>Twitch Viewer</title>
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<link href="css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+	<script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+</head>
+<body>
+	<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+		<div class="mdl-layout__drawer" id="mdl-layout__drawer">
+			<span class="mdl-layout-title">Streams<i class="material-icons" style="float: right; margin: 20px; cursor: pointer;" onclick="update();">refresh</i></span>
+			<div id="streams"></div>
+		</div>
+		<main class="mdl-layout__content">
+			<div class="stream_htmls">
+				<div class="bar" id="bar">
+					<div class="chat_icon" id="chat_icon"></div>
+					<div id="close"></div>					
+				</div>
+				<div class="stream_window_title" id="stream_window_title">
+				</div>
+				<div class="stream_window" id="stream_window"><h1>Willkommen beim Streamtool!<h1><br/>Wähle rechts aus dem Menü einen Stream aus!</div>
+				<div class="stream_chat" id="stream_chat"></div>
+			</div>
+			<script src="script/stream.js"></script>
+		</main>
+	</div>
+</body>
+</html>
