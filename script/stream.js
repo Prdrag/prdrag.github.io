@@ -107,7 +107,7 @@ function closestream(attrib) {
 
 function update() {
     document.getElementById('streams').innerHTML = ("");
-    // GetChannels();
+    GetChannels();
 }
 
 function showchat() {
