@@ -4,7 +4,7 @@ var currentstreamer = "";
 var oldstream = "";
 var chatstatus = false;
 var LoggedUser = "";
-function GetChannels(){
+function GetChannels(LoggedUser){
   var followURL = "https://api.twitch.tv/kraken/users/" + LoggedUser + "/follows/channels?limit=100&callback=?";
   $.getJSON(followURL, function(f){
     for (var i = 0; i < f.follows.length; i++) {
@@ -146,15 +146,18 @@ jQuery(document).ready(function() {
     }
   });
 
-  if (LoggedUser == ''){
+
+  $('.twitch-connect').click(function() {
     Twitch.login({
       scope: ['user_read', 'channel_read']
     });
     Twitch.api({method: 'user'}, function(error, user) {
       LoggedUser = user.display_name;
     });
-  }
-  else{
-    GetChannels();
-  }
+  })
+
+  setTimeout(
+    if (LoggedUser != ''){
+       GetChannels(LoggedUser);
+    }, 1000);
 });
