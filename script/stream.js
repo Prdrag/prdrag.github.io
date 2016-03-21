@@ -150,11 +150,11 @@ jQuery(document).ready(function() {
     Twitch.login({
       scope: ['user_read', 'channel_read']
     });
-  }
-  else{
     Twitch.api({method: 'user'}, function(error, user) {
       LoggedUser = user;
     });
+  }
+  else{
     GetChannels();
   }
 });
