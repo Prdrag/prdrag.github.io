@@ -151,7 +151,7 @@ jQuery(document).ready(function() {
       scope: ['user_read', 'channel_read']
     });
     Twitch.api({method: 'user'}, function(error, user) {
-      LoggedUser = user;
+      LoggedUser = user.display_name;
     });
   }
   else{
