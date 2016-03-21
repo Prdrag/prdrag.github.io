@@ -146,7 +146,7 @@ jQuery(document).ready(function() {
     }
   });
 
-  if (LoggedUser != ''){
+  if (LoggedUser == ''){
     Twitch.login({
       scope: ['user_read', 'channel_read']
     });
