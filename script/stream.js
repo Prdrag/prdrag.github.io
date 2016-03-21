@@ -137,7 +137,6 @@ function twitchAUTH(){
     })
     .done(function (data) {
       // Stuff here
-    }
     })
     .fail(function () {
       // In the event of failure, wait 5 seconds and try again
