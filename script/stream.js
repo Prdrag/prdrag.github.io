@@ -143,7 +143,7 @@ jQuery(document).ready(function() {
             // we're logged in :)
             $('.status input').val('Logged in! Allowed scope: ' + status.scope);
             // Show the data for logged-in users
-            $('.authenticated').removeClass('hidden');
+            $('.authenticated').addClass('hidden');
         } else {
             $('.status input').val('Not Logged in! Better connect with Twitch!');
             // Show the twitch connect button
