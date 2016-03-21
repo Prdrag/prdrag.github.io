@@ -3,8 +3,9 @@ var anim_win = false;
 var currentstreamer = "";
 var oldstream = "";
 var chatstatus = false;
+var LoggedUser = "";
 function GetChannels(){
-  var followURL = "https://api.twitch.tv/kraken/users/hndnisha/follows/channels?limit=100&callback=?";
+  var followURL = "https://api.twitch.tv/kraken/users/" + LoggedUser + "/follows/channels?limit=100&callback=?";
   $.getJSON(followURL, function(f){
     for (var i = 0; i < f.follows.length; i++) {
       channels.push(f.follows[i].channel.display_name)
@@ -145,13 +146,15 @@ jQuery(document).ready(function() {
     }
   });
 
-
-  $('.twitch-connect').click(function() {
+  if (LoggedUser != ''){
     Twitch.login({
       scope: ['user_read', 'channel_read']
     });
-  })
-
-
-  GetChannels();
+  }
+  else{
+    Twitch.api({method: 'user'}, function(error, user) {
+      LoggedUser = user;
+    });
+    GetChannels();
+  }
 });
