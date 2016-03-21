@@ -7,13 +7,13 @@ var LoggedUser = "";
 
 function GetChannels(response) {
     if (response != "") {
-        // var followURL = "https://api.twitch.tv/kraken/users/" + response + "/follows/channels?limit=100&callback=?";
-        // $.getJSON(followURL, function(f) {
+'        // var followURL = "https://api.twitch.tv/kraken/users/" + response + "/follows/channels?limit=100&callback=?";
+        $.getJSON(followURL, function(f) {
             for (var i = 0; i < response.follows.length; i++) {
                 channels.push(response.follows[i].channel.display_name)
             }
             GetStreams();
-        // });
+        });
     }
 }
 
@@ -144,7 +144,7 @@ function twitch(){
         }, function(error, response) {
             if (error) console.log(error);
 
-            if (response) GetChannels(response);
+            if (response) GetChannels(user.name);
         });
     });
 }
