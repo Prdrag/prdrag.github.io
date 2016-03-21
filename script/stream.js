@@ -156,10 +156,6 @@ jQuery(document).ready(function() {
         Twitch.login({
             scope: ['user_read', 'channel_read']
         });
-        // Twitch.api({method: 'user'}, function(error, user) {
-        //   LoggedUser = user.display_name;
-        //   GetChannels(LoggedUser);
-        // });
     })
     Twitch.api({
         method: 'user'
@@ -175,6 +171,4 @@ jQuery(document).ready(function() {
             if (response) GetChannels(response);
         });
     });
-
-    // setTimeout(GetChannels(LoggedUser), 3000);
 });
