@@ -167,6 +167,7 @@ jQuery(document).ready(function() {
             $('.status input').val('Logged in! Allowed scope: ' + status.scope);
             // Show the data for logged-in users
             $('.authenticate').addClass('hidden');
+            document.getElementById('exit_icon').innerHTML = ('<i class="material-icons">exit_to_app</i>');
         } else {
             $('.status input').val('Not Logged in! Better connect with Twitch!');
             // Show the twitch connect button
@@ -181,5 +182,4 @@ jQuery(document).ready(function() {
         });
     })
     twitch();
-    document.getElementById('exit_icon').innerHTML = ('<i class="material-icons">exit_to_app</i>');
 });
