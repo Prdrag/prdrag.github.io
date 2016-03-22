@@ -144,7 +144,10 @@ function twitch(){
         }, function(error, response) {
             if (error) console.log(error);
 
-            if (response) GetChannels(user.name);
+            if (response){
+                GetChannels(user.name);
+                document.getElementById('welcome').innerHTML = ('Hallo' + response.display_name + '! Du kannst oben links auf den Menü Button klicken, um einen Stream auszuwählen!');
+            } 
         });
     });
 }
