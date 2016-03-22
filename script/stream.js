@@ -146,7 +146,7 @@ function twitch(){
 
             if (response){
                 GetChannels(user.name);
-                document.getElementById('welcome').innerHTML = ('Hallo' + response.display_name + '! Du kannst oben links auf den Menü Button klicken, um einen Stream auszuwählen!');
+                document.getElementById('welcome').innerHTML = ('Hallo' + user.display_name + '!</br> Du kannst oben links auf den Menü Button klicken, um einen Stream auszuwählen!');
             } 
         });
     });
@@ -166,14 +166,9 @@ jQuery(document).ready(function() {
         clientId: "ibgi0jycf73wqfwn4cjs1zhcv5utn2g"
     }, function(error, status) {
         if (status.authenticated) {
-            // we're logged in :)
-            $('.status input').val('Logged in! Allowed scope: ' + status.scope);
-            // Show the data for logged-in users
             $('.authenticate').addClass('hidden');
             document.getElementById('exit_icon').innerHTML = ('<i class="material-icons">exit_to_app</i>');
         } else {
-            $('.status input').val('Not Logged in! Better connect with Twitch!');
-            // Show the twitch connect button
             $('.authenticate').removeClass('hidden');
         }
     });
