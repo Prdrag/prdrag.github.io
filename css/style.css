@@ -69,6 +69,10 @@
     cursor: pointer;
     z-index: 99999;
 }
+.exit{
+    position: absolute;
+    right: 10;
+}
 .chat{
     float: right;
 }
