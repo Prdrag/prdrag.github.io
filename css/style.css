@@ -65,7 +65,7 @@
 .chat_icon{
     position: absolute;
     top: 20px;
-    right: 150px;
+    right: 100px;
     cursor: pointer;
     z-index: 99999;
 }
@@ -74,12 +74,14 @@
     right: 10px;
     cursor: pointer;
     top: 20px;
+    z-index: 99999;
 }
-#chat_icon{
+#close{
     position: absolute;
     right: 50px;
     cursor: pointer;
     top: 20px;
+    z-index: 99999;
 }
 .chat{
     float: right;
