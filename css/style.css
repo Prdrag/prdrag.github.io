@@ -7,6 +7,9 @@
 
 .mdl-layout__drawer.is-visible {
     width: 20% !important;
+    background: #19191f;
+    color: #8c8c9c;
+    box-shadow: inset 1px 0 0 0 #000;
 }
 
 .hidden {
