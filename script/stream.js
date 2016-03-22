@@ -182,5 +182,4 @@ jQuery(document).ready(function() {
         });
     })
     twitch();
-    $('#contentScroller').jScrollPane();
 });
