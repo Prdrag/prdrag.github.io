@@ -1,15 +1,3 @@
-#contentScroller
-{
-	position: absolute;
-	top: 25%;
-	bottom: 25%;
-	left: 0px;
-	right: 0px;
-	margin: 0px auto;
-	width: 50%;
-	overflow: scroll;
-}
-
 .stream {
     margin: 5px;
     position: relative;
@@ -22,6 +10,20 @@
     background: #19191f;
     color: #8c8c9c;
     box-shadow: inset 1px 0 0 0 #000;
+    
+}
+
+.mdl-layout__drawer::-webkit-scrollbar {
+    width: 1em;
+}
+ 
+.mdl-layout__drawer::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+.mdl-layout__drawer::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }
 
 .hidden {
