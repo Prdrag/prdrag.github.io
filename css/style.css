@@ -12,7 +12,9 @@
 .hidden {
     display: none;
 }
-
+.authenticate{
+    margin-top: 80px;
+}
 #streams{
     margin: 0;
 }
