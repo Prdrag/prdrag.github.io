@@ -149,6 +149,14 @@ function twitch(){
     });
 }
 
+ $('#logout button').click(function() {
+    Twitch.logout();
+
+    // Reload page and reset url hash. You shouldn't
+    // need to do this.
+    window.location = window.location.pathname
+  })
+
 
 jQuery(document).ready(function() {
     Twitch.init({
@@ -173,4 +181,5 @@ jQuery(document).ready(function() {
         });
     })
     twitch();
+    document.getElementById('exit').innerHTML = ('<i class="material-icons" onclick="Twitch.logout();">exit_to_app</i>');
 });
