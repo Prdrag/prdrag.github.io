@@ -73,6 +73,13 @@
     position: absolute;
     right: 10px;
     cursor: pointer;
+    top: 20px;
+}
+#exit_icon{
+    position: absolute;
+    right: 50px;
+    cursor: pointer;
+    top: 20px;
 }
 .chat{
     float: right;
