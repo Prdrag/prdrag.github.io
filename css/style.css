@@ -69,7 +69,7 @@
     cursor: pointer;
     z-index: 99999;
 }
-.exit{
+#exit{
     position: absolute;
     right: 10;
 }
