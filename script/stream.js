@@ -181,5 +181,5 @@ jQuery(document).ready(function() {
         });
     })
     twitch();
-    document.getElementById('exit').innerHTML = ('<i class="material-icons" onclick="Twitch.logout();">exit_to_app</i>');
+    document.getElementById('exit_icon').innerHTML = ('<i class="material-icons" onclick="Twitch.logout();">exit_to_app</i>');
 });
