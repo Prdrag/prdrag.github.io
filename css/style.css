@@ -1,3 +1,15 @@
+#contentScroller
+{
+	position: absolute;
+	top: 25%;
+	bottom: 25%;
+	left: 0px;
+	right: 0px;
+	margin: 0px auto;
+	width: 50%;
+	overflow: scroll;
+}
+
 .stream {
     margin: 5px;
     position: relative;
