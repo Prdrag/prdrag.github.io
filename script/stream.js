@@ -59,13 +59,10 @@ function GetStreams() {
                 row += '<input id="desc' + x + '" value="' + status + '" type="hidden">';
                 rows += row;
                 $('#streams').append(row);
-                // $('#streams').slick('slickAdd', row);
-                // var currentSlide = $('#streams').slick('slickCurrentSlide');
                 x++;
             }
         })
         .fail(function() {
-            // In the event of failure, wait 5 seconds and try again
             setTimeout(document.GetStreams, 5000);
         });
 }
