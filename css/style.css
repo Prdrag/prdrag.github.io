@@ -4,6 +4,11 @@
     border: 1px solid #133D84;
     float: left;
 }
+#welcome{
+    font-size: 24px;
+    margin-top: 80px;
+    line-height: 50px;
+}
 
 .mdl-layout__drawer.is-visible {
     width: 20% !important;
