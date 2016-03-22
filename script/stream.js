@@ -88,8 +88,6 @@ function openstream(attrib) {
 }
 
 function closestream(attrib) {
-    document.getElementById('stream_window').innerHTML = ("");
-    document.getElementById('stream_window').innerHTML = ("<h1>Willkommen beim Streamtool!<h1><br/>Wähle rechts aus dem Menü einen Stream aus!");
     document.getElementById('stream_window_title').innerHTML = ("");
     document.getElementById('close').innerHTML = ("");
     document.getElementById('stream_chat').innerHTML = ("");
@@ -143,7 +141,7 @@ function twitch(){
 
             if (response){
                 GetChannels(user.name);
-                document.getElementById('welcome').innerHTML = ('Hallo' + user.display_name + '!</br> Du kannst oben links auf den Menü Button klicken, um einen Stream auszuwählen!');
+                document.getElementById('welcome').innerHTML = ('<b>Hallo ' + user.display_name + '!</b></br> Du kannst oben links auf den Menü Button klicken, um einen Stream auszuwählen!');
             } 
         });
     });
@@ -151,9 +149,6 @@ function twitch(){
 
  $('#exit_icon').click(function() {
     Twitch.logout();
-
-    // Reload page and reset url hash. You shouldn't
-    // need to do this.
     window.location = window.location.pathname
   })
 
