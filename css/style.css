@@ -69,9 +69,9 @@
     cursor: pointer;
     z-index: 99999;
 }
-#exit{
+#exit_icon{
     position: absolute;
-    right: 10;
+    right: 10px;
 }
 .chat{
     float: right;
@@ -119,9 +119,6 @@
     top: 0px;
     height: 30px;
     color: #fff;
-}
-#streams_here{
-    padding: 15px;
 }
 .viewer {
     font-size: 14px;
