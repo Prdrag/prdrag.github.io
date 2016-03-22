@@ -86,7 +86,7 @@ function openstream(attrib) {
     document.getElementById('stream_window').innerHTML = (stream);
     document.getElementById('stream_window_title').innerHTML = ("");
     document.getElementById('stream_window_title').innerHTML = ("<b><div class='t_title'>" + show_name + "</b></div>" + "<div class='t_desc'>" + desc + "</div>");
-    document.getElementById('close').innerHTML = ('<i class="material-icons" style="float: right; cursor: pointer; margin-top: 3px;" onclick="closestream();">close</i>');
+    document.getElementById('close').innerHTML = ('<i class="material-icons" onclick="closestream();">close</i>');
     document.getElementById('chat_icon').innerHTML = ('<i class="material-icons" onclick="showchat();">textsms</i>');
 }
 
