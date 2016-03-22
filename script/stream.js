@@ -149,7 +149,7 @@ function twitch(){
     });
 }
 
- $('#logout button').click(function() {
+ $('#exit_icon').click(function() {
     Twitch.logout();
 
     // Reload page and reset url hash. You shouldn't
@@ -181,5 +181,5 @@ jQuery(document).ready(function() {
         });
     })
     twitch();
-    document.getElementById('exit_icon').innerHTML = ('<i class="material-icons" onclick="Twitch.logout();">exit_to_app</i>');
+    document.getElementById('exit_icon').innerHTML = ('<i class="material-icons">exit_to_app</i>');
 });
