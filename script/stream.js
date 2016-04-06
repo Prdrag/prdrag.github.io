@@ -8,7 +8,7 @@ var LoggedUser = "";
 function GetChannels(response) {
     if (response != "") {
     var followURL = "https://api.twitch.tv/kraken/users/" + response + "/follows/channels?limit=100&callback=?";
-        $.getJSON(followURL, function(f) {
+        jQuery.getJSON(followURL, function(f) {
             for (var i = 0; i < f.follows.length; i++) {
                 channels.push(f.follows[i].channel.display_name)
             }
@@ -18,7 +18,7 @@ function GetChannels(response) {
 }
 
 function slideOut(win) {
-    $('.stream_htmls').addClass('animated slideInDown');
+    jQuery('.stream_htmls').addClass('animated slideInDown');
     anim_win = true;
 }
 
@@ -26,7 +26,7 @@ function GetStreams() {
     var x = 0;
     var viewicon = "images/viewers.png";
     // Ask twitch for the status of all channels at once
-    $.ajax({
+    jQuery.ajax({
             url: "https://api.twitch.tv/kraken/streams",
             data: {
                 "channel": channels.join(","),
@@ -58,7 +58,7 @@ function GetStreams() {
                 row += '<input id="show_name' + x + '" value="' + display_name + '" type="hidden">';
                 row += '<input id="desc' + x + '" value="' + status + '" type="hidden">';
                 rows += row;
-                $('#streams').append(row);
+                jQuery('#streams').append(row);
                 x++;
             }
         })
@@ -72,8 +72,8 @@ function openstream(attrib) {
     var desc = document.getElementById("desc" + attrib + "").value;
     var show_name = document.getElementById("show_name" + attrib + "").value;
     var stream = ('<iframe class="videoplayer" src="http://player.twitch.tv/?channel=' + channel + '" height="95%" width="100%" frameborder="0" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe>');
-    $("#mdl-layout__drawer").removeClass("is-visible");
-    $(".mdl-layout__obfuscator").removeClass("is-visible");
+    jQuery("#mdl-layout__drawer").removeClass("is-visible");
+    jQuery(".mdl-layout__obfuscator").removeClass("is-visible");
     currentstreamer = channel;
     if (chatstatus == true) {
         showchat();
@@ -147,7 +147,7 @@ function twitch(){
     });
 }
 
- $('#exit_icon').click(function() {
+ jQuery('#exit_icon').click(function() {
     Twitch.logout();
     window.location = window.location.pathname
   })
@@ -158,15 +158,15 @@ jQuery(document).ready(function() {
         clientId: "ibgi0jycf73wqfwn4cjs1zhcv5utn2g"
     }, function(error, status) {
         if (status.authenticated) {
-            $('.authenticate').addClass('hidden');
+            jQuery('.authenticate').addClass('hidden');
             document.getElementById('exit_icon').innerHTML = ('<i class="material-icons">exit_to_app</i>');
         } else {
-            $('.authenticate').removeClass('hidden');
+            jQuery('.authenticate').removeClass('hidden');
         }
     });
     
 
-    $('.twitch-connect').click(function() {
+    jQuery('.twitch-connect').click(function() {
         Twitch.login({
             scope: ['user_read', 'channel_read']
         });
