@@ -35,6 +35,9 @@ function GetStreams() {
     // Ask twitch for the status of all channels at once
     jQuery.ajax({
             url: "https://api.twitch.tv/kraken/streams",
+            headers: {
+               'Client-ID': 'ibgi0jycf73wqfwn4cjs1zhcv5utn2g'
+             },
             data: {
                 "channel": channels.join(","),
                 "limit": 100
