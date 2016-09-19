@@ -33,20 +33,14 @@ function GetStreams() {
     var x = 0;
     var viewicon = "images/viewers.png";
     // Ask twitch for the status of all channels at once
-    jQuery.ajax({
-            url: "https://api.twitch.tv/kraken/streams",
-            headers: {
-               'Client-ID': 'ibgi0jycf73wqfwn4cjs1zhcv5utn2g'
-             },
-            data: {
-                "channel": channels.join(","),
-                "limit": 100
-            },
-            cache: false,
-            dataType: "jsonp"
-        })
-        .done(function(data) {
-            // Build a hash of who's online for performance
+    $.ajax({
+        type: 'GET',
+        url: 'https://api.twitch.tv/kraken/channels/twitch',
+        headers: {
+            'Client-ID': 'ibgi0jycf73wqfwn4cjs1zhcv5utn2g'
+        },
+        success: function(data) {
+            console.log(data);
             var streams = {};
             for (var i = 0; i < data.streams.length; i++) {
                 var channel = data.streams[i].channel;
@@ -71,10 +65,8 @@ function GetStreams() {
                 jQuery('#streams').append(row);
                 x++;
             }
-        })
-        .fail(function() {
-            setTimeout(document.GetStreams, 5000);
-        });
+        }
+    });
 }
 
 function openstream(attrib) {
