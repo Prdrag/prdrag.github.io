@@ -118,7 +118,7 @@ function twitch(){
         Twitch.api({
             method: 'users/' + user.name + '/follows/channels/' + channel,
             verb: 'PUT',
-            limit: '50'
+            limit: 50
         }, function(error, response) {
             if (error) console.log(error);
 
