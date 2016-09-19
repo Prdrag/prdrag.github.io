@@ -7,7 +7,7 @@ var LoggedUser = "";
 
 function GetChannels(response) {
     if (response != "") {
-    var followURL = "https://api.twitch.tv/kraken/users/" + response + "/follows/channels?limit=100&callback=?";
+    var followURL = "https://api.twitch.tv/kraken/users/" + response + "/follows/channels";
         $.ajax({
          type: 'GET',
          url: followURL,
