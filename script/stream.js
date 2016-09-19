@@ -21,9 +21,9 @@ function GetStreams() {
             headers: {
                 'Client-ID': 'ibgi0jycf73wqfwn4cjs1zhcv5utn2g'
             },
-            success: function(data) {
-                console.log(data);
+            success: function(data) {                
                 if (data.stream != null){
+                    console.log(data);
                     var display_name = data.display_name;
                     var user_name = data.name;
                     var large = data.preview.large;
