@@ -5,25 +5,6 @@ var oldstream = "";
 var chatstatus = false;
 var LoggedUser = "";
 
-// function GetChannels(response) {
-//     if (response != "") {
-//     var followURL = "https://api.twitch.tv/kraken/users/" + response + "/follows/channels";
-//         $.ajax({
-//          type: 'GET',
-//          url: followURL,
-//          headers: {
-//            'Client-ID': 'ibgi0jycf73wqfwn4cjs1zhcv5utn2g'
-//          },
-//          success: function(f) {
-//             for (var i = 0; i < f.follows.length; i++) {
-//                 channels.push(f.follows[i].channel.display_name)
-//             }
-//             GetStreams();
-//          }
-//         });
-//     }
-// }
-
 function slideOut(win) {
     jQuery('.stream_htmls').addClass('animated slideInDown');
     anim_win = true;
@@ -42,25 +23,27 @@ function GetStreams() {
             },
             success: function(data) {
                 console.log(data);
-                var display_name = data.display_name;
-                var user_name = data.name;
-                var large = data.preview.large;
-                var logo = data.logo;
-                var game = data.game;
-                var status = data.status;
-                var viewers = data.viewers;
-                var followers = data.followers;
-                var rows = '';
-                var row = '<div class="stream" id="' + x + '" onclick="openstream(' + x + ');">';
-                row += '<img id="thumbid" src="' + large + '" class="img-responsive" alt="Responsive image">';
-                row += '<div class="overlaybot"><img class="logoicon" src="' + logo + '"><div class="stream_title">' + display_name + '</div><div class="sttitle">' + status + '</div></div>';
-                row += '<div class="overlaytop"><div class ="viewer"><img src="' + viewicon + '">' + viewers + '</div><div class="sgame">' + game + '</div></div></div>';
-                row += '<input id="name' + x + '" value="' + user_name + '" type="hidden">';
-                row += '<input id="show_name' + x + '" value="' + display_name + '" type="hidden">';
-                row += '<input id="desc' + x + '" value="' + status + '" type="hidden">';
-                rows += row;
-                jQuery('#streams').append(row);
-                x++;
+                if (data.stream != null){
+                    var display_name = data.display_name;
+                    var user_name = data.name;
+                    var large = data.preview.large;
+                    var logo = data.logo;
+                    var game = data.game;
+                    var status = data.status;
+                    var viewers = data.viewers;
+                    var followers = data.followers;
+                    var rows = '';
+                    var row = '<div class="stream" id="' + x + '" onclick="openstream(' + x + ');">';
+                    row += '<img id="thumbid" src="' + large + '" class="img-responsive" alt="Responsive image">';
+                    row += '<div class="overlaybot"><img class="logoicon" src="' + logo + '"><div class="stream_title">' + display_name + '</div><div class="sttitle">' + status + '</div></div>';
+                    row += '<div class="overlaytop"><div class ="viewer"><img src="' + viewicon + '">' + viewers + '</div><div class="sgame">' + game + '</div></div></div>';
+                    row += '<input id="name' + x + '" value="' + user_name + '" type="hidden">';
+                    row += '<input id="show_name' + x + '" value="' + display_name + '" type="hidden">';
+                    row += '<input id="desc' + x + '" value="' + status + '" type="hidden">';
+                    rows += row;
+                    jQuery('#streams').append(row);
+                    x++;
+                }
             }
         });
     }
