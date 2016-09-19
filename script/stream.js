@@ -5,24 +5,24 @@ var oldstream = "";
 var chatstatus = false;
 var LoggedUser = "";
 
-function GetChannels(response) {
-    if (response != "") {
-    var followURL = "https://api.twitch.tv/kraken/users/" + response + "/follows/channels";
-        $.ajax({
-         type: 'GET',
-         url: followURL,
-         headers: {
-           'Client-ID': 'ibgi0jycf73wqfwn4cjs1zhcv5utn2g'
-         },
-         success: function(f) {
-            for (var i = 0; i < f.follows.length; i++) {
-                channels.push(f.follows[i].channel.display_name)
-            }
-            GetStreams();
-         }
-        });
-    }
-}
+// function GetChannels(response) {
+//     if (response != "") {
+//     var followURL = "https://api.twitch.tv/kraken/users/" + response + "/follows/channels";
+//         $.ajax({
+//          type: 'GET',
+//          url: followURL,
+//          headers: {
+//            'Client-ID': 'ibgi0jycf73wqfwn4cjs1zhcv5utn2g'
+//          },
+//          success: function(f) {
+//             for (var i = 0; i < f.follows.length; i++) {
+//                 channels.push(f.follows[i].channel.display_name)
+//             }
+//             GetStreams();
+//          }
+//         });
+//     }
+// }
 
 function slideOut(win) {
     jQuery('.stream_htmls').addClass('animated slideInDown');
@@ -149,6 +149,10 @@ function twitch(){
             if (response){
                 GetChannels(user.name);
                 document.getElementById('welcome').innerHTML = ('<b>Hallo ' + user.display_name + '!</b></br> Du kannst oben links auf den Menü Button klicken, um einen Stream auszuwählen!');
+                for (var i = 0; i < f.follows.length; i++) {
+                    channels.push(f.follows[i].channel.display_name)
+                }
+                GetStreams();
             } 
         });
     });
