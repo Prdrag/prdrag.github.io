@@ -33,40 +33,42 @@ function GetStreams() {
     var x = 0;
     var viewicon = "images/viewers.png";
     // Ask twitch for the status of all channels at once
-    $.ajax({
-        type: 'GET',
-        url: 'https://api.twitch.tv/kraken/channels/twitch',
-        headers: {
-            'Client-ID': 'ibgi0jycf73wqfwn4cjs1zhcv5utn2g'
-        },
-        success: function(data) {
-            console.log(data);
-            var streams = {};
-            for (var i = 0; i < data.streams.length; i++) {
-                var channel = data.streams[i].channel;
-                var stream = data.streams[i];
-                var display_name = channel.display_name;
-                var user_name = channel.name;
-                var large = stream.preview.large;
-                var logo = channel.logo;
-                var game = stream.game;
-                var status = channel.status;
-                var viewers = stream.viewers;
-                var followers = channel.followers;
-                var rows = '';
-                var row = '<div class="stream" id="' + x + '" onclick="openstream(' + x + ');">';
-                row += '<img id="thumbid" src="' + large + '" class="img-responsive" alt="Responsive image">';
-                row += '<div class="overlaybot"><img class="logoicon" src="' + logo + '"><div class="stream_title">' + display_name + '</div><div class="sttitle">' + status + '</div></div>';
-                row += '<div class="overlaytop"><div class ="viewer"><img src="' + viewicon + '">' + viewers + '</div><div class="sgame">' + game + '</div></div></div>';
-                row += '<input id="name' + x + '" value="' + user_name + '" type="hidden">';
-                row += '<input id="show_name' + x + '" value="' + display_name + '" type="hidden">';
-                row += '<input id="desc' + x + '" value="' + status + '" type="hidden">';
-                rows += row;
-                jQuery('#streams').append(row);
-                x++;
+    for (var i = 0; i < channels.length; i++) {
+        $.ajax({
+            type: 'GET',
+            url: 'https://api.twitch.tv/kraken/channels/' + channels[i],
+            headers: {
+                'Client-ID': 'ibgi0jycf73wqfwn4cjs1zhcv5utn2g'
+            },
+            success: function(data) {
+                console.log(data);
+                var streams = {};
+                for (var i = 0; i < data.streams.length; i++) {
+                    var channel = data.streams[i].channel;
+                    var stream = data.streams[i];
+                    var display_name = channel.display_name;
+                    var user_name = channel.name;
+                    var large = stream.preview.large;
+                    var logo = channel.logo;
+                    var game = stream.game;
+                    var status = channel.status;
+                    var viewers = stream.viewers;
+                    var followers = channel.followers;
+                    var rows = '';
+                    var row = '<div class="stream" id="' + x + '" onclick="openstream(' + x + ');">';
+                    row += '<img id="thumbid" src="' + large + '" class="img-responsive" alt="Responsive image">';
+                    row += '<div class="overlaybot"><img class="logoicon" src="' + logo + '"><div class="stream_title">' + display_name + '</div><div class="sttitle">' + status + '</div></div>';
+                    row += '<div class="overlaytop"><div class ="viewer"><img src="' + viewicon + '">' + viewers + '</div><div class="sgame">' + game + '</div></div></div>';
+                    row += '<input id="name' + x + '" value="' + user_name + '" type="hidden">';
+                    row += '<input id="show_name' + x + '" value="' + display_name + '" type="hidden">';
+                    row += '<input id="desc' + x + '" value="' + status + '" type="hidden">';
+                    rows += row;
+                    jQuery('#streams').append(row);
+                    x++;
+                }
             }
-        }
-    });
+        });
+    }
 }
 
 function openstream(attrib) {
