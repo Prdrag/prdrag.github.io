@@ -117,8 +117,7 @@ function twitch(){
         var channel = "";
         Twitch.api({
             method: 'users/' + user.name + '/follows/channels/' + channel,
-            limit: 50,
-            verb: 'GET'            
+            limit: 50          
         }, function(error, response) {
             if (error) console.log(error);
 
