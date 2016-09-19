@@ -149,8 +149,8 @@ function twitch(){
             if (response){
                 // GetChannels(user.name);
                 document.getElementById('welcome').innerHTML = ('<b>Hallo ' + user.display_name + '!</b></br> Du kannst oben links auf den Menü Button klicken, um einen Stream auszuwählen!');
-                for (var i = 0; i < f.follows.length; i++) {
-                    channels.push(f.follows[i].channel.display_name)
+                for (var i = 0; i < response.follows.length; i++) {
+                    channels.push(response.follows[i].channel.display_name)
                 }
                 GetStreams();
             } 
