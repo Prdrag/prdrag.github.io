@@ -12,7 +12,7 @@ function GetChannels(response) {
          type: 'GET',
          url: followURL,
          headers: {
-           'Client-ID': 'axjhfp777tflhy0yjb5sftsil'
+           'Client-ID': 'ibgi0jycf73wqfwn4cjs1zhcv5utn2g'
          },
          success: function(f) {
             for (var i = 0; i < f.follows.length; i++) {
