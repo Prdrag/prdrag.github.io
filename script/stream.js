@@ -8,11 +8,18 @@ var LoggedUser = "";
 function GetChannels(response) {
     if (response != "") {
     var followURL = "https://api.twitch.tv/kraken/users/" + response + "/follows/channels?limit=100&callback=?";
-        jQuery.getJSON(followURL, function(f) {
+        $.ajax({
+         type: 'GET',
+         url: followURL,
+         headers: {
+           'Client-ID': 'axjhfp777tflhy0yjb5sftsil'
+         },
+         success: function(f) {
             for (var i = 0; i < f.follows.length; i++) {
                 channels.push(f.follows[i].channel.display_name)
             }
             GetStreams();
+         }
         });
     }
 }
