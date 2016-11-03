@@ -24,14 +24,16 @@ function GetStreams() {
             success: function(data) {              
                     console.log(data);
                     if (data.stream != null){
-                        var display_name = data.display_name;
-                        var user_name = data.name;
-                        var large = data.preview.large;
-                        var logo = data.logo;
-                        var game = data.game;
-                        var status = data.status;
-                        var viewers = data.viewers;
-                        var followers = data.followers;
+                        var stream = data.stream;
+                        var channel = stream.channel;
+                        var display_name = channel.display_name;
+                        var user_name = channel.name;
+                        var large = stream.preview.large;
+                        var logo = channel.logo;
+                        var game = stream.game;
+                        var status = channel.status;
+                        var viewers = stream.viewers;
+                        var followers = channel.followers;
                         var rows = '';
                         var row = '<div class="stream" id="' + x + '" onclick="openstream(' + x + ');">';
                         row += '<img id="thumbid" src="' + large + '" class="img-responsive" alt="Responsive image">';
