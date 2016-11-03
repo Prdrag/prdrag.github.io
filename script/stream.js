@@ -17,31 +17,33 @@ function GetStreams() {
     for (var i = 0; i < channels.length; i++) {
         $.ajax({
             type: 'GET',
-            url: 'https://api.twitch.tv/kraken/streams?channel=' + channels[i],
+            url: 'https://api.twitch.tv/kraken/streams/' + channels[i],
             headers: {
                 'Client-ID': 'ibgi0jycf73wqfwn4cjs1zhcv5utn2g'
             },
-            success: function(data) {                
+            success: function(data) {              
                     console.log(data);
-                    var display_name = data.display_name;
-                    var user_name = data.name;
-                    var large = data.preview.large;
-                    var logo = data.logo;
-                    var game = data.game;
-                    var status = data.status;
-                    var viewers = data.viewers;
-                    var followers = data.followers;
-                    var rows = '';
-                    var row = '<div class="stream" id="' + x + '" onclick="openstream(' + x + ');">';
-                    row += '<img id="thumbid" src="' + large + '" class="img-responsive" alt="Responsive image">';
-                    row += '<div class="overlaybot"><img class="logoicon" src="' + logo + '"><div class="stream_title">' + display_name + '</div><div class="sttitle">' + status + '</div></div>';
-                    row += '<div class="overlaytop"><div class ="viewer"><img src="' + viewicon + '">' + viewers + '</div><div class="sgame">' + game + '</div></div></div>';
-                    row += '<input id="name' + x + '" value="' + user_name + '" type="hidden">';
-                    row += '<input id="show_name' + x + '" value="' + display_name + '" type="hidden">';
-                    row += '<input id="desc' + x + '" value="' + status + '" type="hidden">';
-                    rows += row;
-                    jQuery('#streams').append(row);
-                    x++;
+                    if (data.stream == null){
+                        var display_name = data.display_name;
+                        var user_name = data.name;
+                        var large = data.preview.large;
+                        var logo = data.logo;
+                        var game = data.game;
+                        var status = data.status;
+                        var viewers = data.viewers;
+                        var followers = data.followers;
+                        var rows = '';
+                        var row = '<div class="stream" id="' + x + '" onclick="openstream(' + x + ');">';
+                        row += '<img id="thumbid" src="' + large + '" class="img-responsive" alt="Responsive image">';
+                        row += '<div class="overlaybot"><img class="logoicon" src="' + logo + '"><div class="stream_title">' + display_name + '</div><div class="sttitle">' + status + '</div></div>';
+                        row += '<div class="overlaytop"><div class ="viewer"><img src="' + viewicon + '">' + viewers + '</div><div class="sgame">' + game + '</div></div></div>';
+                        row += '<input id="name' + x + '" value="' + user_name + '" type="hidden">';
+                        row += '<input id="show_name' + x + '" value="' + display_name + '" type="hidden">';
+                        row += '<input id="desc' + x + '" value="' + status + '" type="hidden">';
+                        rows += row;
+                        jQuery('#streams').append(row);
+                        x++;
+                    }
             }
         });
     }
