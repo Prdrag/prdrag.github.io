@@ -114,23 +114,24 @@ function twitch(){
     Twitch.api({
         method: 'user'
     }, function(error, user) {
-        if (error) console.log("ERROR");
-        var channel = "";
-        Twitch.api({
-            method: '/users/' + user.name + '/follows/channels/' + channel,
-            limit: '50'         
-        }, function(error, response) {
-            if (error) console.log(error);
-
-            if (response){
+		if (error) console.log("ERROR");
+		var channel = "";
+		$.ajax({
+			type: 'GET',
+			url: 'https://api.twitch.tv/kraken/users/' + user.name + '/follows/channels?limit=100',
+			headers: {
+				'Client-ID': 'ibgi0jycf73wqfwn4cjs1zhcv5utn2g'
+			},
+			success: function(data){
                 // GetChannels(user.name);
                 document.getElementById('welcome').innerHTML = ('<b>Hallo ' + user.display_name + '!</b></br> Du kannst oben links auf den Menü Button klicken, um einen Stream auszuwählen!');
                 for (var i = 0; i < response.follows.length; i++) {
                     channels.push(response.follows[i].channel.display_name)
                 }
                 GetStreams();
-            } 
-        });
+			}
+		});
+    }
     });
 }
 
