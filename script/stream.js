@@ -23,7 +23,7 @@ function GetStreams() {
             },
             success: function(data) {              
                     console.log(data);
-                    if (data.stream == null){
+                    if (data.stream != null){
                         var display_name = data.display_name;
                         var user_name = data.name;
                         var large = data.preview.large;
