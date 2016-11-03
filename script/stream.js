@@ -114,9 +114,9 @@ function twitch(){
     Twitch.api({
         method: 'user'
     }, function(error, user) {
-		if (error) console.log("ERROR");
-		var channel = "";
-		$.ajax({
+        if (error) console.log("ERROR");
+        var channel = "";
+        $.ajax({
 			type: 'GET',
 			url: 'https://api.twitch.tv/kraken/users/' + user.name + '/follows/channels?limit=100',
 			headers: {
@@ -131,7 +131,6 @@ function twitch(){
                 GetStreams();
 			}
 		});
-    	}	
     });
 }
 
