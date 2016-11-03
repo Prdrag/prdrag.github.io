@@ -17,7 +17,7 @@ function GetStreams() {
     for (var i = 0; i < channels.length; i++) {
         $.ajax({
             type: 'GET',
-            url: 'https://api.twitch.tv/kraken/channels/' + channels[i],
+            url: 'https://api.twitch.tv/kraken/streams?channel=' + channels[i],
             headers: {
                 'Client-ID': 'ibgi0jycf73wqfwn4cjs1zhcv5utn2g'
             },
