@@ -54,7 +54,7 @@ function openstream(attrib) {
     var channel = document.getElementById("name" + attrib + "").value;
     var desc = document.getElementById("desc" + attrib + "").value;
     var show_name = document.getElementById("show_name" + attrib + "").value;
-    var stream = ('<iframe class="videoplayer" src="http://player.twitch.tv/?channel=' + channel + '" height="95%" width="100%" frameborder="0" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe>');
+    var stream = ('<iframe class="videoplayer" src="https://player.twitch.tv/?channel=' + channel + '" height="95%" width="100%" frameborder="0" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe>');
     jQuery("#mdl-layout__drawer").removeClass("is-visible");
     jQuery(".mdl-layout__obfuscator").removeClass("is-visible");
     currentstreamer = channel;
